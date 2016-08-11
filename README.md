@@ -31,6 +31,7 @@ Just add those lines below in your `deploy.php` with your own values :
     set('wp-recipes', [
 	    'theme_name'        => 'Your WP theme folder name',
 	    'theme_dir'         => 'path/to/your/theme/folder',
+	    'theme_dist'        => 'theme_release', // Will be rename with theme_name
 	    'wwwroot_dir'       => 'web', //VHOST ROOT DIR
 	    'shared_dir'        => '{{deploy_path}}/shared', 
 	    'gulp_cmd'          => 'gulp build',
