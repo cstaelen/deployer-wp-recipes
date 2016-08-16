@@ -8,13 +8,13 @@ task('uploads:sync', function() {
     $upload_dir = 'web/app/uploads';
     $user       = $server->getUser();
     $host       = $server->getHost();
-    $port = $server->getPort() ? ' -p' . $server->getPort() : '';
+    $port = $server->getPort() ? ' -p ' . $server->getPort() : '';
     $identityFile = $server->getPrivateKey() ? ' -i ' . $server->getPrivateKey() : '';
 
     writeln('<comment>> Receive remote uploads ... </comment>');
-    runLocally("rsync -avzO -e 'ssh$port$identityFile' $user@$host:{{deploy_path}}/shared/$upload_dir $upload_dir");
+    runLocally("rsync -avzO -e 'ssh$port$identityFile' $user@$host:{{deploy_path}}/shared/$upload_dir/ $upload_dir");
 
     writeln('<comment>> Send local uploads ... </comment>');
-    runLocally("rsync -avzO -e 'ssh$port$identityFile' $upload_dir $user@$host:{{deploy_path}}/shared/$upload_dir");
+    runLocally("rsync -avzO -e 'ssh$port$identityFile' $upload_dir/ $user@$host:{{deploy_path}}/shared/$upload_dir");
 
 })->desc('Sync uploads');
