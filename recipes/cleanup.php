@@ -3,6 +3,8 @@
 /* CLEANUP TASK
 /* --------------------- */
 
+namespace Deployer;
+
 task('deploy:cleanup', function() {
 
     $config = get('wp-recipes');

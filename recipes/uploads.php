@@ -3,6 +3,8 @@
 /* WP UPLOADS TASK
 /* --------------------- */
 
+namespace Deployer;
+
 task('uploads:sync', function() {
     $server = \Deployer\Task\Context::get()->getServer()->getConfiguration();
     $upload_dir = 'web/app/uploads';
