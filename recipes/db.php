@@ -3,8 +3,6 @@
 /* DB TASKS
 /* --------------------- */
 
-namespace Deployer;
-
 // BACKUP DB REMOTE TO LOCAL
 
 task('db:remote:backup', function() {
