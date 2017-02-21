@@ -18,8 +18,8 @@ task('db:remote:backup', function() {
     run('mkdir -p ' . get('dump_path'));
     run('cd {{deploy_path}}/current/ && wp db export ' . get('dump_filepath') . ' --add-drop-table');
 
-    runLocally('mkdir -p db_backups');
-    download('db_backups/' . get('dump_file'), get('dump_filepath'));
+    runLocally('mkdir -p .data/db_backups');
+    download('.data/db_backups/' . get('dump_file'), get('dump_filepath'));
 
 })->desc('Download backup database');
 
@@ -35,11 +35,11 @@ task('db:local:backup', function() {
     set('dump_filepath', get('dump_path') . get('dump_file'));
 
     writeln('<comment>> Local dump : <info>' . get('dump_file') .' </info></comment>');
-    runLocally('mkdir -p db_backups');
-    runLocally('wp db export db_backups/' . get('dump_file') . ' --add-drop-table');
+    runLocally('mkdir -p .data/db_backups');
+    runLocally('wp db export .data/db_backups/' . get('dump_file') . ' --add-drop-table');
 
     run('mkdir -p ' . get('dump_path'));
-    upload('db_backups/' . get('dump_file'),  get('dump_filepath'));
+    upload('.data/db_backups/' . get('dump_file'),  get('dump_filepath'));
 
 })->desc('Upload backup database');
 
