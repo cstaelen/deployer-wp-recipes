@@ -55,9 +55,9 @@ task('db:create', function() {
 
 task('db:cmd:pull', function() {
     writeln('<comment>> Imports remote db to local :<info>' . get('dump_file') . '</info> </comment>');
-    runLocally('wp db import db_backups/' . get('dump_file'));
+    runLocally('wp db import .data/db_backups/' . get('dump_file'));
     runLocally('wp search-replace ' . get('remote_url') . ' ' . get('local_url'));
-    runLocally('rm -f db_backups/' . get('dump_file'));
+    runLocally('rm -f .data/db_backups/' . get('dump_file'));
 
 })->desc('Imports DB');
 
