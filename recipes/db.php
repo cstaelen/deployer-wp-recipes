@@ -3,6 +3,10 @@
 /* DB TASKS
 /* --------------------- */
 
+namespace Deployer;
+
+use DotEnv;
+
 // BACKUP DB REMOTE TO LOCAL
 
 task('db:remote:backup', function() {

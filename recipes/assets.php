@@ -3,6 +3,8 @@
 /* ASSETS TASK
 /* --------------------- */
 
+namespace Deployer;
+
 task('deploy:assets', function() {
 
     $config = get('wp-recipes');
