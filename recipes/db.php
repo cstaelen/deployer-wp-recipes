@@ -89,8 +89,7 @@ task('env:uri', function() {
 
         runLocally('mkdir -p ' . $tmp_dir);
         runLocally('cp .env ' . $tmp_dir . $local_env );
-        download($tmp_dir . $remote_env, $config['shared_dir'] . '/.env');
-
+        download($config['shared_dir'] . '/.env', $tmp_dir . $remote_env);
 
         $dotenvremote = new Dotenv\Dotenv($tmp_dir, $remote_env);
         if (file_exists($tmp_dir . $remote_env)) {
