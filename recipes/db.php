@@ -23,7 +23,7 @@ task('db:remote:backup', function() {
     run('cd {{deploy_path}}/current/ && wp db export ' . get('dump_filepath') . ' --add-drop-table');
 
     runLocally('mkdir -p .data/db_backups');
-    download('.data/db_backups/' . get('dump_file'), get('dump_filepath'));
+    download(get('dump_filepath'), '.data/db_backups/' .  get('dump_file'));
 
 })->desc('Download backup database');
 
@@ -61,6 +61,7 @@ task('db:cmd:pull', function() {
     writeln('<comment>> Imports remote db to local :<info>' . get('dump_file') . '</info> </comment>');
     runLocally('wp db import .data/db_backups/' . get('dump_file'));
     runLocally('wp search-replace ' . get('remote_url') . ' ' . get('local_url'));
+    runLocally('wp search-replace ' . addslashes(get('remote_url')) . ' ' . addslashes(get('local_url')));
     runLocally('rm -f .data/db_backups/' . get('dump_file'));
 
 })->desc('Imports DB');
