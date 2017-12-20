@@ -50,7 +50,8 @@ Just add those lines below in your `deploy.php` with your own values :
 
 Upload your WP database : `dep db:push prod`
 Download your WP database : `dep db:pull prod`
-Sync WP uploads with rsync : `dep uploads:sync prod`
+Pull WP uploads with rsync : `dep uploads:pull prod`
+Push WP uploads with rsync : `dep uploads:push prod`
 Upload your local copy of WP uploads with rsync : `dep uploads:push prod`
 
 You can also use those rules below in your `deploy.php` file to compile and deploy assets and cleanup some useless files on your staging/production server :
