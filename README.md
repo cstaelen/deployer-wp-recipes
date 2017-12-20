@@ -34,10 +34,10 @@ Just add those lines below in your `deploy.php` with your own values :
 	    'theme_name'        => 'Your WP theme folder name', # e.g. 'mytheme'
 	    'theme_dir'         => 'path/to/your/theme/folder', # if you're using Bedrock, '/web/app/themes/
 	    'wwwroot_dir'       => 'web', //VHOST ROOT DIR
-	    'shared_dir'        => '{{deploy_path}}/shared', 
+	    'shared_dir'        => '{{deploy_path}}/shared',
 	    'gulp_cmd'          => 'gulp build', # for webpack, use 'yarn && yarn run build:production'
 	    'assets_dist'       => 'path/to/theme/folder/dist', # use '{{theme_dir}}/dist'
-	    'local_wp_url'      => 'http://local.dev', 
+	    'local_wp_url'      => 'http://local.dev',
 	    'remote_wp_url'     => 'http://mywebsite.com',
 	    'clean_after_deploy'=>  [
 	        'deploy.php',
@@ -55,9 +55,26 @@ Upload your local copy of WP uploads with rsync : `dep uploads:push prod`
 
 You can also use those rules below in your `deploy.php` file to compile and deploy assets and cleanup some useless files on your staging/production server :
 
-    after('deploy', 'deploy:assets');
     after('deploy', 'deploy:cleanup');
-    
+
+You can use `deploy:assets` as part of your deploy process. For example:
+
+    task('deploy', [
+        'deploy:prepare',
+        'deploy:lock',
+        'deploy:release',
+        'deploy:update_code',
+        'deploy:shared',
+        'deploy:vendors',
+        'deploy:assets',
+        'deploy:writable',
+        'deploy:symlink',
+        'deploy:unlock',
+        'cleanup',
+        'varnish:reload',
+        'php-fpm:reload',
+    ])->desc('Deploy your Bedrock project');
+    after('deploy', 'success');
 
 ## WP recipes using phpdotenv
 
