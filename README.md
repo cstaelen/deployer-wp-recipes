@@ -3,18 +3,18 @@
 For the record, those recipes was written using a personal Wordpress stack based on [Bedrock](https://roots.io/bedrock/) (Thanks to the great [roots.io](https://roots.io/) team), using [phpdotenv](https://github.com/vlucas/phpdotenv) package. But it can be used in many other configuration .
 
 
-##Features
+## Features
 - Deploy repository code with gulp compiled files
 - Sync Wordpress uploads
 - Pull and push Wordpress database
 - Clean up some files
 
-##Requirements
+## Requirements
 - [Deployer PHP](http://deployer.org/)
 - [WP CLI](https://wp-cli.org/)
 - [phpdotenv](https://github.com/vlucas/phpdotenv) (optional)
 
-##Installation
+## Installation
 
 Make  sure to include recipe files in your `deploy.php`:
 
@@ -24,7 +24,7 @@ Make  sure to include recipe files in your `deploy.php`:
     require 'vendor/cstaelen/deployer-wp-recipes/recipes/uploads.php';
 
 
-##Configuration
+## Configuration
 
 Just add those lines below in your `deploy.php` with your own values :
 
@@ -45,7 +45,7 @@ Just add those lines below in your `deploy.php` with your own values :
 	    ]
     ]);
 
-##Available tasks
+## Available tasks
 
 Upload your WP database : `dep db:push prod`
 Download your WP database : `dep db:pull prod`
